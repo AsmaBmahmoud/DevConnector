@@ -1,4 +1,5 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState } from 'react';
+import axios from 'axios';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -15,11 +16,12 @@ setFormData({ ...formData, [e.target.name]: e.target.value });
 const onSubmit = e => {
   e.preventDefault();
   if(password !==password2) {
-    console.log('passwprd do not match');
+    console.log('password do not match');
   }else {
-    console.log(FormData);
+    console.log(formData);
   }
-};
+}
+  
 
 
 return (
@@ -29,26 +31,32 @@ return (
       <form className="form" onSubmit={e => onSubmit(e)}>
         <div className="form-group">
           <input 
-          type="text" 
-          placeholder="Name" 
-          name="name" 
+          type='text' 
+          placeholder='Name' 
+          name='name'
           value={name} 
           onChange={e => onChange(e)} 
           required 
           />
         </div>
         <div className="form-group">
-          <input type="email" placeholder="Email Address" name="email" value={email} 
-          onChange={e => onChange(e)} required  />
+          <input 
+          type='email' 
+          placeholder='Email Address' 
+          name='email' 
+          value={email} 
+          onChange={e => onChange(e)} 
+          required  
+          />
           <small className="form-text"
             >This site uses Gravatar so if you want a profile image, use a
             Gravatar email</small>
         </div>
         <div className="form-group">
           <input
-            type="password"
-            placeholder="Password"
-            name="password"
+            type='password'
+            placeholder='Password'
+            name='password'
             minLength="6"
             value={password} 
           onChange={e => onChange(e)}
@@ -58,10 +66,10 @@ return (
         </div>
         <div className="form-group">
           <input
-            type="password"
-            placeholder="Confirm Password"
-            name="password2"
-            minLength="6"
+            type='password'
+            placeholder='Confirm Password'
+            name='password2'
+            minLength='6'
             value={password2} 
           onChange={e => onChange(e)}
           required
